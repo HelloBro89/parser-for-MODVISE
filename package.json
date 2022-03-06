@@ -1,0 +1,21 @@
+{
+    "name": "parser-for-modvise",
+    "version": "1.0.0",
+    "description": "site parser",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "nodemon src/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Pavel Valoshyn",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.3",
+        "puppeteer": "^13.4.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
