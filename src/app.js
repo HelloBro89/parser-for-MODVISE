@@ -15,13 +15,13 @@ app.get('/category', async (req, res) => {
     // const url = `https://mediamarkt.pl/outlet/telefony-i-smartfony/akcesoria/zestawy-sluchawkowe`; // headphones
     // const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/sluchawki`; // headphones another section
     // const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/kino-domowe`; // home theater
-    // const url = `https://mediamarkt.pl/outlet/agd/plyty-grzejne`; // plate is empty!
-    const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/telewizory`; // TV
+    const url = `https://mediamarkt.pl/outlet/agd/plyty-grzejne`; // plate is empty!
+    // const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/telewizory`; // TV
     // console.log(req.path);
 
     // const result = await checkAmountPages(url);
     const result = await getСontent(url);
-    if (result.length === 0) {
+    if (!result.length) {
         res.status(200).json({ message: 'This category does not have any products.' });
     } else {
         res.status(200).json(result);

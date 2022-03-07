@@ -49,13 +49,13 @@ export const getСontent = async (url) => {
             // );
             // const amountOfProducts = +categoryAndAmount.innerText.slice(1, -1);
             // const numberOfPages = Math.ceil(amountOfProducts / 20);
-            console.log(numberOfPages);
-            if (numberOfPages === 0) {
-                return { data: [], numberOfPages: 0 };
-            }
 
+            if (!numberOfPages) return { data: [], numberOfPages: 0 };
+
+            // ОПТИМИЗИРОВАТЬ ЧТОБЫ СТРАНИЦУ ИСКАЛО НЕ ЯВНО В HTML
             const elementsWithNames = document.querySelectorAll('.m-offerBox_content');
             const pageNum = document.querySelector('#js-listingForm > nav > input').value;
+            // ----------------------------------------------------------------------------
 
             elementsWithNames.forEach((item) => {
                 const headerData = item.querySelector('.b-ofr_headDataTitle');
@@ -78,10 +78,8 @@ export const getСontent = async (url) => {
             });
             return { data, numberOfPages };
         });
-        console.log(`${counter} --- ${result.numberOfPages - 1}`);
-        if (counter > result.numberOfPages - 1) {
-            flag = false;
-        }
+        // console.log(`${counter} --- ${result.numberOfPages - 1}`);
+        if (counter > result.numberOfPages - 1) flag = false;
 
         listOfProfucts.push(...result.data);
 
