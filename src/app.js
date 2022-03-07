@@ -11,7 +11,7 @@ app.use(Express.json());
 // app.use(cors());
 
 app.get('/category', async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     // const url = `https://mediamarkt.pl/outlet/telefony-i-smartfony/akcesoria/zestawy-sluchawkowe`; // headphones
     // const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/sluchawki`; // headphones another section
     // const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/kino-domowe`; // home theater
@@ -19,10 +19,14 @@ app.get('/category', async (req, res) => {
     const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/telewizory`; // TV
     // console.log(req.path);
 
+    // const result = await checkAmountPages(url);
     const result = await getСontent(url);
-
+    if (result.length === 0) {
+        res.status(200).json({ message: 'This category does not have any products.' });
+    } else {
+        res.status(200).json(result);
+    }
     // console.log(result);
-    res.status(200).json(result);
 });
 // app.use('/users', routerUser);
 

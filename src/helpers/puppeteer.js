@@ -6,15 +6,23 @@ export const checkAmountPages = async (url) => {
     await page.goto(url);
 
     const result = await page.evaluate(() => {
-        const categoryAndAmount = document.querySelector(
-            '#js-mainWrapper > main > div.b-listing_categoryTitle.is-outlet.is-menuCategories > h1 > span'
-        );
-        const amountOfProducts = +categoryAndAmount.innerText.slice(1, -1);
+        // const categoryAndAmount = document.querySelector('.m-typo').textContent;
+        const categoryAndAmount = document.querySelector('#js-mainWrapper > main > div.b-listing_categoryTitle.is-outlet > h1').textContent;
+        const regexp = /-?\d+(\.\d+)?/g;
+        const amountOfProducts = +categoryAndAmount.match(regexp)[0];
         const numberOfPages = Math.ceil(amountOfProducts / 20);
+        // // ------------------------------------------ FIRST WAY
+        // const categoryAndAmount = document.querySelector(
+        //     '#js-mainWrapper > main > div.b-listing_categoryTitle.is-outlet.is-menuCategories > h1 > span'
+        // );
+        // const amountOfProducts = +categoryAndAmount.innerText.slice(1, -1);
+        // const numberOfPages = Math.ceil(amountOfProducts / 20);
+        // // ------------------------------------------
 
         return numberOfPages;
     });
     browser.close();
+    console.log(typeof result);
     return result;
 };
 
@@ -30,13 +38,24 @@ export const getСontent = async (url) => {
 
         const result = await page.evaluate(async () => {
             let data = [];
+            const categoryAndAmount = document.querySelector(
+                '#js-mainWrapper > main > div.b-listing_categoryTitle.is-outlet > h1'
+            ).textContent;
+            const regexp = /-?\d+(\.\d+)?/g;
+            const amountOfProducts = +categoryAndAmount.match(regexp)[0];
+            const numberOfPages = Math.ceil(amountOfProducts / 20);
+            // const categoryAndAmount = document.querySelector(
+            //     '#js-mainWrapper > main > div.b-listing_categoryTitle.is-outlet.is-menuCategories > h1 > span'
+            // );
+            // const amountOfProducts = +categoryAndAmount.innerText.slice(1, -1);
+            // const numberOfPages = Math.ceil(amountOfProducts / 20);
+            console.log(numberOfPages);
+            if (numberOfPages === 0) {
+                return { data: [], numberOfPages: 0 };
+            }
 
-            // !!!!!!! подумать над этим блоком
-            const checkPage = document.querySelector('#js-listingForm > nav > input');
-            if (!checkPage) return 'Product not found';
-            // ------------------------------------------------------
             const elementsWithNames = document.querySelectorAll('.m-offerBox_content');
-            const pageNum = checkPage.value;
+            const pageNum = document.querySelector('#js-listingForm > nav > input').value;
 
             elementsWithNames.forEach((item) => {
                 const headerData = item.querySelector('.b-ofr_headDataTitle');
@@ -57,16 +76,15 @@ export const getСontent = async (url) => {
 
                 data.push(productСontent);
             });
-            return data;
+            return { data, numberOfPages };
         });
-        // console.log(result);
-        if (counter > 3) {
+        console.log(`${counter} --- ${result.numberOfPages - 1}`);
+        if (counter > result.numberOfPages - 1) {
             flag = false;
         }
 
-        await listOfProfucts.push(...result);
+        listOfProfucts.push(...result.data);
 
-        // console.log(position);
         console.log(listOfProfucts.length);
         counter++;
     }
