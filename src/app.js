@@ -1,14 +1,29 @@
 import Express from 'express';
-import { /* getTest ,*/ getСontent } from './handlers/listHandler.js';
+import { getListContent } from './handlers/list.handler.js';
+import { getDetailsContent } from './handlers/details.handler.js';
+import { getTest } from './handlers/forTest.js';
 
 const app = Express();
-
 app.use(Express.json());
-// app.use(Express.urlencoded({ extended: false }));
-// app.use(cors());
+
+app.get('/test', async (req, res) => {
+    // const url = 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-62';
+    // const url = 'https://mediamarkt.pl/foto-i-kamery/aparat-canon-eos-rp-rf-24-105-mm-f4-7-1-is-stm-czarny';
+    // const url = 'https://mediamarkt.pl/filmy/papillon-motylek-dvd-ksiazka'; // with cents
+    const test = await getTest(url);
+    res.status(200).json(test);
+});
 
 app.get('/details', async (req, res) => {
-    console.log();
+    try {
+        const { urls } = req.body;
+        const result = await getDetailsContent(urls);
+
+        res.status(200).json(result);
+    } catch (e) {
+        console.log(`********** ${e.stack}`);
+        res.status(404).json({ Message: 'Page not found or invalid selector' });
+    }
 });
 
 app.get('/list', async (req, res) => {
@@ -34,19 +49,19 @@ app.get('/list', async (req, res) => {
     // const url = `https://mediamarkt.pl/filmy/filmy-blu-ray/dramat`; // films
 
     // const result = await getTest(url);
+    try {
+        const url = req.body.url;
+        const checkPath = url.split('/')[3] === 'outlet' ? 'outlet' : 'main';
+        const result = await getListContent(url, checkPath);
 
-    const url = req.body.url;
-    console.log(url);
-    const checkPath = url.split('/')[3] === 'outlet' ? 'outlet' : 'main';
-    console.log(checkPath);
-    const result = await getСontent(url, checkPath);
-
-    // console.log(result);
-
-    if (!result.length) {
-        res.status(200).json({ message: 'This category does not have any products.' });
-    } else {
-        res.status(200).json(result);
+        if (!result.length) {
+            res.status(200).json({ message: 'This category does not have any products.' });
+        } else {
+            res.status(200).json(result);
+        }
+    } catch (e) {
+        console.log(e.stack);
+        res.status(404).json({ Message: 'Page not found or invalid selector' });
     }
 });
 

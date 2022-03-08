@@ -1,4 +1,4 @@
-export const runPuppeteer = async (page, selectors, positionOnList, counter) => {
+export const puppeteerList = async (page, selectors, positionOnList, counter) => {
     return page.evaluate(
         (selectors, counter, positionOnList) => {
             try {

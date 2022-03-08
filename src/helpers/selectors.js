@@ -1,4 +1,4 @@
-export const getSelectors = async (checkPath) => {
+export const getSelectorsOfList = (checkPath) => {
     const categoryAndAmount =
         checkPath === 'main'
             ? '#spark > div.layout > div.list-page > div > div > div.header > h1'
@@ -11,4 +11,12 @@ export const getSelectors = async (checkPath) => {
     const url = checkPath === 'main' ? 'a' : '.b-ofr_headDataTitle';
 
     return { categoryAndAmount, elementsWithNames, productName, price, availability, url };
+};
+
+export const getSelectorsOfDetails = () => {
+    const productName = 'h1.title.is-heading';
+    const price = '.main-price > span';
+    const availability = 'div.availability-available > div.info > div.item.availability > span';
+    const checkCent = '.main-price > div > span';
+    return { productName, price, availability, checkCent };
 };
