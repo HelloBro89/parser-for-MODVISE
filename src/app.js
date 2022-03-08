@@ -1,5 +1,5 @@
 import Express from 'express';
-import { getTest, getСontent } from './helpers/puppeteer.js';
+import { /* getTest ,*/ getСontent } from './handlers/listHandler.js';
 
 const app = Express();
 
@@ -7,17 +7,20 @@ app.use(Express.json());
 // app.use(Express.urlencoded({ extended: false }));
 // app.use(cors());
 
-app.get('/category', async (req, res) => {
-    // console.log(req.body);
-    console.log(req.originalUrl);
+app.get('/details', async (req, res) => {
+    console.log();
+});
 
-    // ******************* OUTLET
+app.get('/list', async (req, res) => {
+    // *******************  OUTLET
     // const url = `https://mediamarkt.pl/outlet/telefony-i-smartfony/akcesoria/zestawy-sluchawkowe`; // headphones 12 pages--------
     // const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/sluchawki`; // headphones another section 19 pages
     // const url = `https://mediamarkt.pl/outlet/rtv-i-telewizory/kino-domowe`; // home theater 13 pages
     // const url = `https://mediamarkt.pl/outlet/komputery-i-tablety/komputery-stacjonarne`; // Computers 1 pages
     // const url = `https://mediamarkt.pl/outlet/agd/plyty-grzejne`; // plate is empty!
-    const url = `https://mediamarkt.pl/outlet/agd/kuchnie`; // FOR TEST
+    // const url = `https://mediamarkt.pl/outlet/agd/kuchnie`; // FOR TEST
+    // const url = `https://mediamarkt.pl/outlet/dla-dzieci/karmienie`; // things for kithen
+
     // ******************** MAIN SALES
 
     // const url = `https://mediamarkt.pl/komputery-i-tablety/laptopy-laptopy-2-w-1/notebooki`; // laptops
@@ -28,11 +31,14 @@ app.get('/category', async (req, res) => {
     // const url = `https://mediamarkt.pl/konsole-i-gry/nintendo-3ds/2ds/gry-nintendo-3ds/2ds`; // Games for Nintendo FOR TEST 1 PAGE
     // const url = `https://mediamarkt.pl/komputery-i-tablety/laptopy-laptopy-2-w-1/notebooki`; // ALLL
     // const url = `https://mediamarkt.pl/agd-male/uzdatnianie-powietrza/klimatyzatory`; // SSOME THINGS
+    // const url = `https://mediamarkt.pl/filmy/filmy-blu-ray/dramat`; // films
 
     // const result = await getTest(url);
 
-    // const checkPath = 'main';
-    const checkPath = 'out';
+    const url = req.body.url;
+    console.log(url);
+    const checkPath = url.split('/')[3] === 'outlet' ? 'outlet' : 'main';
+    console.log(checkPath);
     const result = await getСontent(url, checkPath);
 
     // console.log(result);

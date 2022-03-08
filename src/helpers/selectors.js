@@ -1,4 +1,4 @@
-export const getElements = async (checkPath) => {
+export const getSelectors = async (checkPath) => {
     const categoryAndAmount =
         checkPath === 'main'
             ? '#spark > div.layout > div.list-page > div > div > div.header > h1'
@@ -9,7 +9,6 @@ export const getElements = async (checkPath) => {
     const price = checkPath === 'main' ? '.whole' : '.m-priceBox_price';
     const availability = checkPath === 'main' ? '.text' : '#js-availability > ul > li.b-ofrBox_availabilityListItem.is-available';
     const url = checkPath === 'main' ? 'a' : '.b-ofr_headDataTitle';
+
     return { categoryAndAmount, elementsWithNames, productName, price, availability, url };
 };
-// '#spark > div.layout > div.list-page > div > div > div.layout > div.content > div.list > div.offers.is-list > div:nth-child(1) > div.pricing > div > div.info > div.item.availability > span'
-//.text
