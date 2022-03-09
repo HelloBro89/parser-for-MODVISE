@@ -4,6 +4,7 @@ import { getDetailsContent } from './handlers/details.handler.js';
 
 const app = Express();
 app.use(Express.json());
+
 app.get('/details', async (req, res) => {
     try {
         const { urls } = req.body;
