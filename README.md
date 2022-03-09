@@ -26,7 +26,39 @@ npm run start
 
 This app has two endpoints
 
-| Enpoint   | Еndpoint method | <div style="min-width:220px">Body (in JSON format)</div>                                                                                      | Example                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| --------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| /category | GET             | { url<span style="color:red">\* </span>: <span style="color:blue">string</span> (url to category link) }                                      | { "url": "https://mediamarkt.pl/foto-i-kamery/aparaty-cyfrowe/aparaty-systemowe"}                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| /details  | GET             | { urls<span style="color:red">\*</span>: <span style="color:blue">string</span><span style="color:green">[ ]</span> (url to product details)} | { "urls": ["https://mediamarkt.pl/foto-i-kamery/aparat-canon-eos-r-body-czarny", "https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-62", "https://mediamarkt.pl/foto-i-kamery/aparat-canon-eos-rp-rf-24-105-mm-f4-7-1-is-stm-czarny", "https://mediamarkt.pl/agd/pralka-whirlpool-tdlr6241bs-pl-n", "https://mediamarkt.pl/filmy/papillon-motylek-dvd-ksiazka", "https://mediamarkt.pl/agd-do-zabudowy/bateria-kuchenna-franke-115-0200-647-marina-chrom"]} |
+| Enpoint   | Еndpoint method | Body (in JSON format)                                                                            |
+| --------- | --------------- | ------------------------------------------------------------------------------------------------ |
+| /category | GET             | { url $\color{red}{*}$ : $\color{blue}{string}$(url to category link) }                          |
+| /details  | GET             | { urls $\color{red}{*}$ : $\color{blue}{string}$ $\color{green}{[ ]}$ (url to product details) } |
+
+## Examples:
+
+$\color{red}{your-text-here}$
+
+1. GET request to **details** endpoint (URL):
+
+```javascript
+http://localhost:3000/category
+```
+
+_BODY_ :
+
+```javascript
+{
+    "urls": ["https://mediamarkt.pl/foto-i-kamery/aparat-canon-eos-r-body-czarny", "https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-62", "https://mediamarkt.pl/foto-i-kamery/aparat-canon-eos-rp-rf-24-105-mm-f4-7-1-is-stm-czarny", "https://mediamarkt.pl/agd/pralka-whirlpool-tdlr6241bs-pl-n", "https://mediamarkt.pl/filmy/papillon-motylek-dvd-ksiazka", "https://mediamarkt.pl/agd-do-zabudowy/bateria-kuchenna-franke-115-0200-647-marina-chrom"]
+}
+```
+
+2.  GET request to **category** endpoint (URL):
+
+```javascript
+http://localhost:3000/category
+```
+
+_BODY_ :
+
+```javascript
+{
+    "url": "https://mediamarkt.pl/foto-i-kamery/aparaty-cyfrowe/aparaty-systemowe"
+}
+```
