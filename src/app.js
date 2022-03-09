@@ -17,8 +17,7 @@ app.get('/details', async (req, res) => {
     }
 });
 
-app.get('/list', async (req, res) => {
-    // const result = await getTest(url);
+app.get('/category ', async (req, res) => {
     try {
         const url = req.body.url;
         const checkPath = url.split('/')[3] === 'outlet' ? 'outlet' : 'main';
