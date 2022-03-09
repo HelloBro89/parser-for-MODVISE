@@ -4,7 +4,6 @@ import { getDetailsContent } from './handlers/details.handler.js';
 
 const app = Express();
 app.use(Express.json());
-
 app.get('/details', async (req, res) => {
     try {
         const { urls } = req.body;
@@ -18,6 +17,7 @@ app.get('/details', async (req, res) => {
 });
 
 app.get('/category ', async (req, res) => {
+    console.log('test');
     try {
         const url = req.body.url;
         const checkPath = url.split('/')[3] === 'outlet' ? 'outlet' : 'main';
