@@ -28,10 +28,10 @@ npm run start
 
 This app has two endpoints
 
-| Enpoint   | Еndpoint method | Body (in JSON format)                                                                            |
-| --------- | --------------- | ------------------------------------------------------------------------------------------------ |
-| /category | GET             | { url $\color{red}{*}$ : $\color{blue}{string}$(url to category link) }                          |
-| /details  | GET             | { urls $\color{red}{*}$ : $\color{blue}{string}$ $\color{green}{[ ]}$ (url to product details) } |
+| Enpoint   | Еndpoint method | Body (in JSON format)                            |
+| --------- | --------------- | ------------------------------------------------ |
+| /category | GET             | { url \* : string(url to category link) }        |
+| /details  | GET             | { urls \* : string [] (url to product details) } |
 
 # 3. Example requests :
 
