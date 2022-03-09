@@ -24,6 +24,8 @@ npm run start
 
 ## How to use ?
 
+**Main root route** is _http://localhost:3000_
+
 This app has two endpoints
 
 | Enpoint   | Еndpoint method | Body (in JSON format)                                                                            |
@@ -36,7 +38,7 @@ This app has two endpoints
 1. GET request to **details** endpoint (URL):
 
 ```javascript
-http://localhost:3000/category
+http://localhost:3000/details
 ```
 
 _BODY_ :
@@ -57,7 +59,7 @@ _BODY_ :
 
 ```javascript
 {
-    "url": "https://mediamarkt.pl/foto-i-kamery/aparaty-cyfrowe/aparaty-systemowe"
+    "url": "https://mediamarkt.pl/outlet/komputery-i-tablety/komputery-stacjonarne"
 }
 ```
 
@@ -98,6 +100,14 @@ _BODY_ :
         availability: true,
         position: 2,
         url: 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-62',
+        page: 1,
+    },
+    {
+        productName: 'Komputer stacjonarny HP M01-F0008nw Ryzen 3 3200G/8GB/256GB SSD/INT/Win10H',
+        price: '1574 zl',
+        availability: true,
+        position: 3,
+        url: 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-64',
         page: 1,
     },
 ];

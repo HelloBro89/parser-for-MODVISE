@@ -17,7 +17,7 @@ app.get('/details', async (req, res) => {
     }
 });
 
-app.get('/category ', async (req, res) => {
+app.get('/category', async (req, res) => {
     console.log('test');
     try {
         const url = req.body.url;
