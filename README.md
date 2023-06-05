@@ -69,16 +69,16 @@ _BODY_ :
 
 ```javascript
 [
-    {
-        productName: 'Papillon. Motylek (DVD) + Książka',
-        price: '2,99 zl',
-        availability: true,
-    },
-    {
-        productName: 'Aparat CANON EOS RP + RF 24-105 mm F4-7.1 IS STM Czarny',
-        price: '5988 zl',
-        availability: false,
-    },
+  {
+    productName: 'Papillon. Motylek (DVD) + Książka',
+    price: '2,99 zl',
+    availability: true,
+  },
+  {
+    productName: 'Aparat CANON EOS RP + RF 24-105 mm F4-7.1 IS STM Czarny',
+    price: '5988 zl',
+    availability: false,
+  },
 ];
 ```
 
@@ -86,29 +86,35 @@ _BODY_ :
 
 ```javascript
 [
-    {
-        productName: 'Komputer stacjonarny HP 460-a200nw J3060/4GB/1TB/Win10H',
-        price: '838 zl',
-        availability: false,
-        position: 1,
-        url: 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-460-a200nw-j3060-4gb-1tb-win10h-65',
-        page: 1,
-    },
-    {
-        productName: 'Komputer stacjonarny HP M01-F0008nw Ryzen 3 3200G/8GB/256GB SSD/INT/Win10H',
-        price: '1912 zl',
-        availability: true,
-        position: 2,
-        url: 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-62',
-        page: 1,
-    },
-    {
-        productName: 'Komputer stacjonarny HP M01-F0008nw Ryzen 3 3200G/8GB/256GB SSD/INT/Win10H',
-        price: '1574 zl',
-        availability: true,
-        position: 3,
-        url: 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-64',
-        page: 1,
-    },
+  {
+    productName: 'Komputer stacjonarny HP 460-a200nw J3060/4GB/1TB/Win10H',
+    price: '838 zl',
+    availability: false,
+    position: 1,
+    url: 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-460-a200nw-j3060-4gb-1tb-win10h-65',
+    page: 1,
+  },
+  {
+    productName: 'Komputer stacjonarny HP M01-F0008nw Ryzen 3 3200G/8GB/256GB SSD/INT/Win10H',
+    price: '1912 zl',
+    availability: true,
+    position: 2,
+    url: 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-62',
+    page: 1,
+  },
+  {
+    productName: 'Komputer stacjonarny HP M01-F0008nw Ryzen 3 3200G/8GB/256GB SSD/INT/Win10H',
+    price: '1574 zl',
+    availability: true,
+    position: 3,
+    url: 'https://mediamarkt.pl/komputery-i-tablety/komputer-stacjonarny-hp-m01-f0008nw-ryzen-3-3200g-8gb-256gb-ssd-int-win10h-64',
+    page: 1,
+  },
 ];
 ```
+
+This app has one endpoint
+
+|      Enpoint       | Еndpoint method |                              Query params                               |
+| :----------------: | :-------------: | :---------------------------------------------------------------------: |
+| /currency/convert/ |       GET       | **amount** : _number_ \n **from** \* : _string_ \n **to** \* : _string_ |
