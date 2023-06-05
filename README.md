@@ -112,9 +112,3 @@ _BODY_ :
   },
 ];
 ```
-
-This app has one endpoint
-
-|      Enpoint       | Еndpoint method |                              Query params                               |
-| :----------------: | :-------------: | :---------------------------------------------------------------------: |
-| /currency/convert/ |       GET       | **amount** : _number_ \n **from** \* : _string_ \n **to** \* : _string_ |
